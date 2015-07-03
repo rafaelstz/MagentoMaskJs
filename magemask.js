@@ -40,7 +40,7 @@ jQuery(document).ready(function() {
 			          var dataMask = mePhone.data('mask');
 			          var phone = mePhone.val().replace(/\D/g, '');
 		              mePhone.unmask();
-			          if(phone.length > 17){
+			          if(phone.length > 14){
 				          mePhone.mask("(99) 99999-999?9");
 			          }else{
 				          mePhone.mask("(99) 9999-9999?9");
