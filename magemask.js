@@ -16,16 +16,13 @@ jQuery(document).ready(function() {
 				jQuery(this).attr("data-mask" , maskFormat);
 			});}
 
-	// Adiciona Máscaras com (Nome do atributo, valor do atributo, másscara)
-	addMaskJs("title","Celular", "(99) 99999-999?9");
-	addMaskJs("title","Telefone", "(99) 99999-999?9");
-	addMaskJs("name","telephone", "(99) 99999-999?9");
-	addMaskJs("name","billing_telephone", "(99) 99999-999?9");
-	addMaskJs("name","billing_fax", "(99) 99999-999?9");
-	addMaskJs("title","cpf", "99.999.999/9999-99");
+	// Adiciona Mascaras com (Nome do atributo, valor do atributo, mascara)
+	addMaskJs("title","Celular", "(99)99999-999?9");
+	addMaskJs("title","Telefone", "(99)99999-999?9");
 	addMaskJs("title","Cep", "99999-999");
 	addMaskJs("title","CEP", "99999-999");
-	addMaskJs("id","billing_zip", "99999-999");
+	addMaskJs("id","postcode", "99999-999");
+	//jQuery(".ie input" ).attr("data-mask", "99.999.999-9");
 
 	jQuery('input').each(function(index) {
 		var me = jQuery(this);
@@ -40,10 +37,23 @@ jQuery(document).ready(function() {
 			          var dataMask = mePhone.data('mask');
 			          var phone = mePhone.val().replace(/\D/g, '');
 		              mePhone.unmask();
-			          if(phone.length > 14){
+			          if(phone.length > 10){
 				          mePhone.mask("(99) 99999-999?9");
 			          }else{
 				          mePhone.mask("(99) 9999-9999?9");
+			          }
+		          })
+		.trigger('focusout');
+	jQuery('input[data-mask="(99)99999-999?9"]')
+		.focusout(function(){
+			          var mePhone = jQuery(this);
+			          var dataMask = mePhone.data('mask');
+			          var phone = mePhone.val().replace(/\D/g, '');
+		              mePhone.unmask();
+			          if(phone.length > 10){
+				          mePhone.mask("(99)99999-999?9");
+			          }else{
+				          mePhone.mask("(99)9999-9999?9");
 			          }
 		          })
 		.trigger('focusout');
@@ -61,6 +71,5 @@ jQuery(document).ready(function() {
 			          }
 		          })
 		.trigger('focusout');
-
-
+		
 });
